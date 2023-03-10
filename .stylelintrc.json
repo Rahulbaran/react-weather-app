@@ -17,7 +17,7 @@
     "function-name-case": "lower",
     "value-keyword-case": "lower",
     "declaration-colon-space-after": "always",
-    "unit-allowed-list": ["em", "rem", "px", "vw", "vh", "%", "fr"],
+    "unit-allowed-list": ["em", "rem", "px", "vw", "vh", "%", "fr", "ms", "s"],
     "max-nesting-depth": 2,
     "order/order": ["custom-properties", "declarations"],
     "order/properties-order": ["width", "inline-size", "height", "block-size"]
