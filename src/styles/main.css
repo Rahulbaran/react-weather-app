@@ -1,0 +1,208 @@
+@font-face {
+  font-family: "Mona Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  src: url("./Fonts/Mona-Sans.woff") format("woff"),
+    url("./Fonts/Mona-Sans.ttf");
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 75%;
+
+  @media screen and (width > 30em) {
+    font-size: 87.5%;
+  }
+
+  @media screen and (width > 48em) {
+    font-size: 100%;
+  }
+
+  @media screen and (width > 79.9375em) {
+    font-size: 112.5%;
+  }
+
+  @media screen and (width > 120em) {
+    font-size: 125%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  &,
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+:root {
+  --base-fs: 1rem;
+  --base-padding: 0.5em;
+  --base-margin: 0.5em;
+  --base-br: 20px;
+  --base-gap: 0.5rem;
+  --base-lh: 1.5;
+
+  /* Font Weights */
+  --fw-regular: 400;
+  --fw-medium: calc(var(--fw-regular, 400) + 100);
+  --fw-semi: calc(var(--fw-medium, 500) + 100);
+  --fw-bold: calc(var(--fw-semi, 600) + 100);
+
+  /* Font Stacks */
+  --fs-mona-sans: "Mona Sans", helvetica, verdana, arial;
+
+  /* Colors */
+  --body-bg: hwb(270 50% 0%);
+  --body-bg-img: linear-gradient(
+    to bottom left,
+    var(--body-bg),
+    hwb(250 50% 0%)
+  );
+  --heading-color: hwb(260 70% 0%);
+  --text-color: hwb(260 60% 10%);
+  --weather-card-bg: linear-gradient(
+    to bottom,
+    hwb(260 0% 0%),
+    hwb(260 5% 0%),
+    hwb(260 10% 0%),
+    hwb(260 15% 0%)
+  );
+  --weather-card-header-bg: hwb(260 10% 40%);
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  background-attachment: fixed;
+  background-color: var(--body-bg);
+  background-image: var(--body-bg-img);
+  font-family: var(--fs-mona-sans);
+  font-size: var(--base-fs);
+  font-weight: var(--fw-regular);
+  line-height: var(--base-lh);
+}
+
+/* Typography */
+:where(h1, h2, h3, h4, h5, h6, legend) {
+  color: var(--heading-color);
+  font-weight: var(--fw-bold);
+
+  &:not(h5, h6) {
+    line-height: calc(var(--base-lh) / 1.5);
+  }
+}
+
+:where(p, span, li, a, label) {
+  color: var(--link-color);
+  font-size: calc(var(--base-fs) * 1.1);
+
+  &:not(a) {
+    color: var(--text-color);
+  }
+}
+
+a,
+img,
+video,
+audio,
+iframe,
+span {
+  display: block;
+}
+
+/* Components */
+.btn {
+  background-color: var(--btn-bg);
+  border: 0.1em solid var(--btn-text-color);
+  border-radius: calc(var(--base-br) * 0.25);
+  color: var(--btn-text-color);
+  font-family: inherit;
+  font-size: calc(var(--base-fs) * 1.15);
+  font-weight: var(--fw-medium);
+  padding: calc(var(--base-padding) * 1.5) calc(var(--base-padding) * 2);
+  transition: opacity 200ms ease-out;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.75;
+  }
+}
+
+.primary-btn {
+  --btn-bg: hwb(260 0% 20%);
+  --btn-text-color: hwb(260 60% 0%);
+}
+
+/* Weather Container */
+.weather-container {
+  block-size: 100vh;
+  display: flex;
+
+  & .weather-card {
+    background-image: var(--weather-card-bg);
+    border-radius: calc(var(--base-br) * 0.2);
+    margin: auto;
+  }
+}
+
+.card {
+  border-radius: calc(var(--base-br) * 0.2);
+  inline-size: min(540px, 90vw);
+  margin-inline: auto;
+}
+
+.card-header,
+.card-body,
+.card-footer {
+  padding: calc(var(--base-padding) * 2) calc(var(--base-padding) * 1.5);
+}
+
+.card-header,
+.time-info-wrapper,
+.temp-info-wrapper,
+.sun-info-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.card-header {
+  background-color: var(--weather-card-header-bg);
+
+  & h1 {
+    font-size: calc(var(--base-fs) * 1.4);
+    font-weight: var(--fw-semi);
+    letter-spacing: 0.5px;
+  }
+}
+
+.card-body {
+  & > *:not(:last-of-type) {
+    margin-block-end: calc(var(--base-margin) * 3);
+  }
+
+  & .time-info-wrapper {
+    & > * {
+      font-size: calc(var(--base-fs) * 1.3);
+      font-weight: var(--fw-medium);
+    }
+  }
+}
+
+.card-footer {
+  & button {
+    width: 100%;
+  }
+}
