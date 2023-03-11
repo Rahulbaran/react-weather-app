@@ -8,7 +8,7 @@ export default function Weather({ w }) {
           <h1>{w.name}</h1>
           <button
             className="btn primary-btn refresh-btn"
-            onClick={() => window.location.reload()}
+            onClick={() => history.go(0)}
           >
             Refresh
           </button>
