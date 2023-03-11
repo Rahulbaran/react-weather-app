@@ -14,6 +14,8 @@ export default function App() {
   const [weatherData, setWeatherData] = useState("");
 
   useEffect(() => {
+    getPosition();
+
     fetchWeather(loc.lat, loc.long)
       .then(res => setWeatherData(res))
       .catch(rej => console.error(rej));

@@ -1,12 +1,17 @@
 import { getLocalDate, getLocalTime } from "../utils/TimeModifier";
 
-export default function Weather({ w, getPosition }) {
+export default function Weather({ w }) {
   return (
     <main className="container weather-container">
       <div className="card weather-card">
         <div className="card-header">
           <h1>{w.name}</h1>
-          <button>Refresh</button>
+          <button
+            className="btn primary-btn refresh-btn"
+            onClick={() => window.location.reload()}
+          >
+            Refresh
+          </button>
         </div>
 
         <div className="card-body">
@@ -28,11 +33,11 @@ export default function Weather({ w, getPosition }) {
           </div>
         </div>
 
-        <div className="card-footer">
+        {/* <div className="card-footer">
           <button className="btn primary-btn" onClick={getPosition}>
             Get Info
           </button>
-        </div>
+        </div> */}
       </div>
     </main>
   );

@@ -186,6 +186,10 @@ span {
     font-weight: var(--fw-semi);
     letter-spacing: 0.5px;
   }
+
+  & .refresh-btn {
+    padding-block: calc(var(--base-padding) * 1.25);
+  }
 }
 
 .card-body {
